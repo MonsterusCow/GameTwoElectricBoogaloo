@@ -12,6 +12,8 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +24,7 @@ class GameViewController: UIViewController {
                 scene.scaleMode = .aspectFill
                 
                 //play thing
-                play = scene as? GameScene
+                access = scene as? GameScene
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -37,20 +39,21 @@ class GameViewController: UIViewController {
         let value = UIInterfaceOrientation.landscapeLeft.rawValue
                     UIDevice.current.setValue(value, forKey: "orientation")
         
-        
-        
-        
     }
 
-    @IBAction func upButton(_ sender: Any) {
-        access.moveDude(thing: "up")
+    @IBAction func downpress(_ sender: Any) {
+        var timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            print("Timer fired!")
+        }
     }
-    @IBAction func rightButton(_ sender: Any) {
+    
+    @IBAction func stoppress(_ sender: Any) {
+        timer.invalidate()
     }
-    @IBAction func downButton(_ sender: Any) {
-    }
-    @IBAction func leftButton(_ sender: Any) {
-    }
+    
+
+    
+
     
     
     

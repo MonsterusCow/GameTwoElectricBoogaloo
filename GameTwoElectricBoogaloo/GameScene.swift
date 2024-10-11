@@ -18,7 +18,11 @@ class GameScene: SKScene {
     
     func moveDude(thing: String){
         if thing == "up"{
-            Player.physicsBody?.velocity = CGVector(dx: 0, dy: 50)
+            if Int((Player.physicsBody?.velocity.dy)!) < 50 {
+                Player.physicsBody?.velocity = CGVector(dx: 0, dy: (Player.physicsBody?.velocity.dy)!+1)
+            }
+        } else if thing == "down"{
+            Player.physicsBody?.velocity = CGVector(dx: 0, dy: -50)
         }
     }
     
