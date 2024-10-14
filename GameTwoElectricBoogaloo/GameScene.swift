@@ -8,18 +8,20 @@
 import SpriteKit
 import GameplayKit
 
+let cam = SKCameraNode()
 class GameScene: SKScene {
     
     var Player: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        Player = self.childNode(withName: "Player") as! SKSpriteNode
+        Player = self.childNode(withName: "Player") as? SKSpriteNode
+        self.camera = cam
     }
     
     func moveDude(thing: String){
         if thing == "up"{
-            if Int((Player.physicsBody?.velocity.dy)!) < 50 {
-                Player.physicsBody?.velocity = CGVector(dx: 0, dy: (Player.physicsBody?.velocity.dy)!+1)
+            if Int((Player.physicsBody?.velocity.dy)!) < 300 {
+                Player.physicsBody?.velocity = CGVector(dx: 0, dy: (Player.physicsBody?.velocity.dy)!+10)
             }
         } else if thing == "down"{
             Player.physicsBody?.velocity = CGVector(dx: 0, dy: -50)
@@ -28,5 +30,6 @@ class GameScene: SKScene {
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
+        cam.position = Player.position
     }
 }
