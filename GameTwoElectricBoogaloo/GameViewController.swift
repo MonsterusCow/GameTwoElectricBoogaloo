@@ -44,7 +44,7 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        cursorBL.layer.cornerRadius = 42.5
+        cursorBL.layer.cornerRadius = 32.5
         cursorBL.layer.masksToBounds = true
 //        lupBL.isHidden = true
 //        upBL.isHidden = true
@@ -86,13 +86,13 @@ class GameViewController: UIViewController {
         x = Double(touch.location(in: self.view).x)
         y = Double(touch.location(in: self.view).y)
         
-        let xpart = x-Double(leftBL.center.x+leftBL.frame.width)
-        let ypart = y-Double(leftBL.center.y)
-        let result = sqrt((xpart*xpart)+(ypart*ypart))
+//        let xpart = x-Double(leftBL.center.x+leftBL.frame.width)
+//        let ypart = y-Double(leftBL.center.y)
+//        let result = sqrt((xpart*xpart)+(ypart*ypart))
 //        if result<=105.0{
             cursorBL.center = CGPoint(x: x, y: y)
 //        }
-        print(result)
+//        print(result)
         
         //verticle checks
         if checkBounds(x: x, y: y, lab: upBL){
@@ -156,13 +156,13 @@ class GameViewController: UIViewController {
         x = Double(touch.location(in: self.view).x)
         y = Double(touch.location(in: self.view).y)
         
-        let xpart = x-Double(leftBL.center.x+leftBL.frame.width)
-        let ypart = y-Double(leftBL.center.y)
-        let result = sqrt((xpart*xpart)+(ypart*ypart))
+//        let xpart = x-Double(leftBL.center.x+leftBL.frame.width)
+//        let ypart = y-Double(leftBL.center.y)
+//        let result = sqrt((xpart*xpart)+(ypart*ypart))
 //        if result<=120.0{
             cursorBL.center = CGPoint(x: x, y: y)
 //        }
-        print(result)
+//        print(result)
         
         //verticle checks
         if checkBounds(x: x, y: y, lab: upBL){

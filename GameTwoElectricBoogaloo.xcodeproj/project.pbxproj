@@ -72,12 +72,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		287E43082CBE94850071C2B5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		28A252A52CB86CE100E36329 = {
 			isa = PBXGroup;
 			children = (
 				28A252B02CB86CE100E36329 /* GameTwoElectricBoogaloo */,
 				28A252CA2CB86CE400E36329 /* GameTwoElectricBoogalooTests */,
 				28A252D42CB86CE400E36329 /* GameTwoElectricBoogalooUITests */,
+				287E43082CBE94850071C2B5 /* Frameworks */,
 				28A252AF2CB86CE100E36329 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -195,6 +203,8 @@
 			);
 			mainGroup = 28A252A52CB86CE100E36329;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 28A252AF2CB86CE100E36329 /* Products */;
 			projectDirPath = "";
