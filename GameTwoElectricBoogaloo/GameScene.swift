@@ -9,13 +9,22 @@ import SpriteKit
 import GameplayKit
 
 let cam = SKCameraNode()
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var Player: SKSpriteNode!
+    var Enemy: SKSpriteNode!
     
     override func didMove(to view: SKView) {
         Player = self.childNode(withName: "Player") as? SKSpriteNode
+        Enemy = self.childNode(withName: "Spooky") as? SKSpriteNode
         self.camera = cam
+        physicsWorld.contactDelegate = self
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "Player"{
+
+        }
     }
     
     func moveDude(thing: String){
