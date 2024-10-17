@@ -117,6 +117,9 @@
                     <connections>
                         <outlet property="cursorBL" destination="fWW-0O-9Wf" id="fjU-sZ-icV"/>
                         <outlet property="downBL" destination="nJT-Ox-X1i" id="fQe-bL-ADP"/>
+                        <outlet property="heart1" destination="Tpk-cO-EXM" id="a5J-TH-FLW"/>
+                        <outlet property="heart2" destination="zJL-fk-5X1" id="IIJ-yA-xWX"/>
+                        <outlet property="heart3" destination="IG1-9y-HrX" id="2Un-ru-9xa"/>
                         <outlet property="ldownBL" destination="dTa-MI-rT9" id="Vn7-Hu-l2O"/>
                         <outlet property="leftBL" destination="8LL-gp-LO0" id="vsl-Tm-TSO"/>
                         <outlet property="lupBL" destination="vXs-7t-drx" id="XWm-Kt-BgS"/>

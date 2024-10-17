@@ -25,6 +25,9 @@ class GameViewController: UIViewController {
     @IBOutlet weak var ldownBL: UILabel!
     @IBOutlet weak var downBL: UILabel!
     @IBOutlet weak var rdownBL: UILabel!
+    @IBOutlet weak var heart1: UIImageView!
+    @IBOutlet weak var heart2: UIImageView!
+    @IBOutlet weak var heart3: UIImageView!
     
     //outlets} ------------------------------
     
@@ -64,6 +67,7 @@ class GameViewController: UIViewController {
                 
                 //play thing
                 access = scene as? GameScene
+                access.gameViewController = self
                 
                 // Present the scene
                 view.presentScene(scene)
@@ -231,7 +235,7 @@ class GameViewController: UIViewController {
     
     //movement buttons} ------------------------------
     
-    //check bounds func{ ------------------------------
+    //funcs{ ------------------------------
     
     func checkBounds(x: Double, y: Double, lab: UILabel)-> Bool{
         var retu = false
@@ -241,7 +245,16 @@ class GameViewController: UIViewController {
         return retu
     }
     
-    //check bounds func} ------------------------------
+    func loseHealth(h: Int) {
+        if h == 2 {
+            heart1.image = UIImage(named: "emptyheart")
+        } else if h == 1 {
+            heart2.image = UIImage(named: "emptyheart")
+        } else{
+            heart3.image = UIImage(named: "emptyheart")
+        }
+    }
+    //funcs} ------------------------------
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscapeRight

@@ -11,7 +11,10 @@ import GameplayKit
 let cam = SKCameraNode()
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var gameViewController: GameViewController!
+    
     var Player: SKSpriteNode!
+    var pHealth = 3
     var Enemy: SKSpriteNode!
     
     override func didMove(to view: SKView) {
@@ -22,8 +25,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "Player"{
-
+        if contact.bodyA.node?.name == "Player" || contact.bodyB.node?.name == "Player" {
+            pHealth -= 1
+            gameViewController.loseHealth(h: pHealth)
+            Enemy.removeFromParent()
         }
     }
     
