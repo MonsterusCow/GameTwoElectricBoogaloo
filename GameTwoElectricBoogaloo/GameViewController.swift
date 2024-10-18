@@ -89,77 +89,16 @@ class GameViewController: UIViewController {
         let touch = touches.first!
         x = Double(touch.location(in: self.view).x)
         y = Double(touch.location(in: self.view).y)
-        
-//        let xpart = x-Double(leftBL.center.x+leftBL.frame.width)
-//        let ypart = y-Double(leftBL.center.y)
-//        let result = sqrt((xpart*xpart)+(ypart*ypart))
-//        if result<=105.0{
-            cursorBL.center = CGPoint(x: x, y: y)
-//        }
-//        print(result)
-        
-        //verticle checks
-        if checkBounds(x: x, y: y, lab: upBL){
-                access.Player.physicsBody?.velocity = CGVector(dx: (access.Player.physicsBody?.velocity.dx)!, dy: 300)
-                verticle = true
-        } else if checkBounds(x: x, y: y, lab: downBL){
-                access.Player.physicsBody?.velocity = CGVector(dx: (access.Player.physicsBody?.velocity.dx)!, dy: -300)
-                verticle = true
-        } else if !checkBounds(x: x, y: y, lab: upBL) && verticle{
-                access.Player.physicsBody?.velocity = CGVector(dx: (access.Player.physicsBody?.velocity.dx)!, dy: 0)
-                verticle = false
-        } else if !checkBounds(x: x, y: y, lab: downBL) && verticle{
-                access.Player.physicsBody?.velocity = CGVector(dx: (access.Player.physicsBody?.velocity.dx)!, dy: 0)
-                verticle = false
-        }
-        //horizontal checks
-        if checkBounds(x: x, y: y, lab: rightBL){
-                access.Player.physicsBody?.velocity = CGVector(dx: 300, dy: (access.Player.physicsBody?.velocity.dy)!)
-            horizontal = true
-        } else if checkBounds(x: x, y: y, lab: leftBL){
-                access.Player.physicsBody?.velocity = CGVector(dx: -300, dy: (access.Player.physicsBody?.velocity.dy)!)
-            horizontal = true
-        } else if !checkBounds(x: x, y: y, lab: rightBL) && horizontal{
-                access.Player.physicsBody?.velocity = CGVector(dx: 0, dy: (access.Player.physicsBody?.velocity.dy)!)
-            horizontal = false
-        } else if !checkBounds(x: x, y: y, lab: leftBL) && horizontal{
-                access.Player.physicsBody?.velocity = CGVector(dx: 0, dy: (access.Player.physicsBody?.velocity.dy)!)
-            horizontal = false
-        }
-        //top diagnol
-        if checkBounds(x: x, y: y, lab: lupBL){
-            access.Player.physicsBody?.velocity = CGVector(dx: -300, dy:300)
-            updiag = true
-        } else if checkBounds(x: x, y: y, lab: rupBL){
-            access.Player.physicsBody?.velocity = CGVector(dx: 300, dy:300)
-            updiag = true
-        } else if !checkBounds(x: x, y: y, lab: lupBL) && updiag{
-            access.Player.physicsBody?.velocity = CGVector(dx: 0, dy:0)
-            updiag = false
-        } else if !checkBounds(x: x, y: y, lab: rupBL) && updiag{
-            access.Player.physicsBody?.velocity = CGVector(dx: 0, dy:0)
-            updiag = false
-        }
-        // down diagnol
-        if checkBounds(x: x, y: y, lab: ldownBL){
-            access.Player.physicsBody?.velocity = CGVector(dx: -300, dy:-300)
-            downdiag = true
-        } else if checkBounds(x: x, y: y, lab: rdownBL){
-            access.Player.physicsBody?.velocity = CGVector(dx: 300, dy:-300)
-            downdiag = true
-        } else if !checkBounds(x: x, y: y, lab: ldownBL) && downdiag{
-            access.Player.physicsBody?.velocity = CGVector(dx: 0, dy:0)
-            downdiag = false
-        } else if !checkBounds(x: x, y: y, lab: rdownBL) && downdiag{
-            access.Player.physicsBody?.velocity = CGVector(dx: 0, dy:0)
-            downdiag = false
-        }
+        moving()
     }
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         let touch = touches.first!
         x = Double(touch.location(in: self.view).x)
         y = Double(touch.location(in: self.view).y)
-        
+        moving()
+    }
+    
+    func moving(){
 //        let xpart = x-Double(leftBL.center.x+leftBL.frame.width)
 //        let ypart = y-Double(leftBL.center.y)
 //        let result = sqrt((xpart*xpart)+(ypart*ypart))
@@ -224,13 +163,13 @@ class GameViewController: UIViewController {
             access.Player.physicsBody?.velocity = CGVector(dx: 0, dy:0)
             downdiag = false
         }
-        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         access.Player.physicsBody?.velocity = CGVector(dx: 0, dy: 0)
         cursorBL.center = CGPoint(x: leftBL.center.x+leftBL.frame.width, y: leftBL.center.y)
     }
+    
 
     
     //movement buttons} ------------------------------

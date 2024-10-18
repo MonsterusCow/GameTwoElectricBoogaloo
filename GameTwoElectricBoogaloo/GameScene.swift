@@ -5,6 +5,15 @@
 //  Created by RYAN STARK on 10/10/24.
 //
 
+class Enemies{
+    var health = 1
+    var size = 10
+    
+    init(health: Int = 1, size: Int = 10) {
+        self.health = health
+        self.size = size
+    }
+}
 import SpriteKit
 import GameplayKit
 
@@ -32,18 +41,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func moveDude(thing: String){
-        if thing == "up"{
-            if Int((Player.physicsBody?.velocity.dy)!) < 300 {
-                Player.physicsBody?.velocity = CGVector(dx: 0, dy: (Player.physicsBody?.velocity.dy)!+10)
-            }
-        } else if thing == "down"{
-            Player.physicsBody?.velocity = CGVector(dx: 0, dy: -50)
-        }
-    }
     
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         cam.position = Player.position
+        let angle = atan2(Player.position.y - Enemy.position.y , Player.position.x - Enemy.position.x)
+        Enemy.zRotation = angle - CGFloat(Double.pi/2)
+        print(Enemy.zRotation)
     }
 }
