@@ -29,8 +29,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     override func didMove(to view: SKView) {
         Player = self.childNode(withName: "Player") as? SKSpriteNode
         Enemy = self.childNode(withName: "Spooky") as? SKSpriteNode
+        let straightenFilter = CIFilter.straighten()
+        Enemy.texture.
         self.camera = cam
         physicsWorld.contactDelegate = self
+        print("hi")
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -41,12 +44,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
+    func faceEtoP() {
+        let angle = atan2(Player.position.y - Enemy.position.y , Player.position.x - Enemy.position.x)
+        Enemy.zRotation = angle - CGFloat(Double.pi/2)
+    }
+//    enemy: Enemies
+    func moveEtoP(){
+        Enemy.position = CGPoint(x:Enemy.position.x + cos(Enemy.zRotation) * 1,y:Enemy.position.y + sin(Enemy.zRotation) * 1)
+    }
     
+
     override func update(_ currentTime: TimeInterval) {
         // Called before each frame is rendered
         cam.position = Player.position
-        let angle = atan2(Player.position.y - Enemy.position.y , Player.position.x - Enemy.position.x)
-        Enemy.zRotation = angle - CGFloat(Double.pi/2)
-        print(Enemy.zRotation)
+//        faceEtoP()
+        moveEtoP()
+
+
     }
 }
